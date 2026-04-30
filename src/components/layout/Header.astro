@@ -1,0 +1,24 @@
+---
+import SocialLinks from '../primitives/SocialLinks.astro';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<header class:list={['mb-20', className]}>
+  <h1 class="mb-[18px] font-display text-[clamp(2.5rem,5vw,3.4rem)] font-normal leading-[1.1] tracking-normal text-white">
+    Jason Wright
+  </h1>
+  <p class="mb-7 font-mono text-[0.75rem] leading-[1.6] tracking-[0.04em] text-muted">
+    Principle Frontend Engineer · Tokyo → London, 2026 · <span class="shimmer">Open to new roles</span>
+  </p>
+  <div class="mb-9 max-w-[480px] space-y-4 text-[0.9rem] leading-[1.8] text-muted [text-wrap:pretty]">
+    <p>
+      Product-minded Principal Frontend Engineer building fast, scalable frontend systems that improve product quality and help teams move with confidence.
+    </p>
+  </div>
+  <SocialLinks class="gap-6" />
+</header>
