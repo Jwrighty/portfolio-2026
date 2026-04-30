@@ -1,0 +1,37 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import Rule from '../components/primitives/Rule.astro';
+import SectionLabel from '../components/primitives/SectionLabel.astro';
+import CompanyBlock from '../components/career/CompanyBlock.astro';
+import ProjectCard from '../components/projects/ProjectCard.astro';
+import { career } from '../data/career';
+
+const projects = (await getCollection('projects'))
+  .filter((project) => !project.data.draft)
+  .sort((a, b) => a.data.title.localeCompare(b.data.title));
+---
+
+<BaseLayout
+  description="Senior frontend engineer moving from Tokyo to London in 2026, building polished product interfaces and testing agentic software workflows."
+  path="/"
+>
+  <main class="mx-auto max-w-[640px] px-8 pb-[120px] pt-[108px] max-sm:px-6 max-sm:py-16">
+    <Header />
+    <section class="mb-[72px] mt-[60px]" aria-labelledby="career-heading">
+      <SectionLabel id="career-heading">Work</SectionLabel>
+      <div>
+        {career.map((company) => <CompanyBlock company={company} />)}
+      </div>
+    </section>
+    <section class="mb-[72px] mt-[60px]" aria-labelledby="projects-heading">
+      <SectionLabel id="projects-heading">Projects</SectionLabel>
+      <div class="flex flex-col gap-3.5">
+        {projects.map((project) => <ProjectCard project={project} />)}
+      </div>
+    </section>
+    <Footer />
+  </main>
+</BaseLayout>
