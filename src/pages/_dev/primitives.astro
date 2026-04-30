@@ -1,0 +1,62 @@
+---
+import Tag from "../../components/primitives/Tag.astro";
+import Rule from "../../components/primitives/Rule.astro";
+import SectionLabel from "../../components/primitives/SectionLabel.astro";
+import ExternalLink from "../../components/primitives/ExternalLink.astro";
+import SocialLinks from "../../components/primitives/SocialLinks.astro";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Primitives Dev Demo</title>
+    <link rel="stylesheet" href="/src/styles/global.css" />
+  </head>
+  <body style="padding: 2rem; background: var(--color-bg); color: var(--color-text); font-family: var(--font-sans);">
+    <h1 style="font-family: var(--font-display); font-size: 2rem; margin-bottom: 2rem;">
+      Primitives Demo
+    </h1>
+
+    <section style="margin-bottom: 2rem;">
+      <SectionLabel>Tag</SectionLabel>
+      <div style="margin-top: 0.75rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+        <Tag>TypeScript</Tag>
+        <Tag>Astro</Tag>
+        <Tag>React</Tag>
+      </div>
+    </section>
+
+    <section style="margin-bottom: 2rem;">
+      <SectionLabel>Rule</SectionLabel>
+      <div style="margin-top: 0.75rem;">
+        <Rule />
+      </div>
+    </section>
+
+    <section style="margin-bottom: 2rem;">
+      <SectionLabel>SectionLabel</SectionLabel>
+      <div style="margin-top: 0.75rem;">
+        <SectionLabel>Experience</SectionLabel>
+        <SectionLabel>Projects</SectionLabel>
+      </div>
+    </section>
+
+    <section style="margin-bottom: 2rem;">
+      <SectionLabel>ExternalLink</SectionLabel>
+      <div style="margin-top: 0.75rem;">
+        <ExternalLink href="https://astro.build">Astro (opens in new tab)</ExternalLink>
+        &nbsp;·&nbsp;
+        <ExternalLink href="/about" target="_self">Internal link (same tab)</ExternalLink>
+      </div>
+    </section>
+
+    <section style="margin-bottom: 2rem;">
+      <SectionLabel>SocialLinks</SectionLabel>
+      <div style="margin-top: 0.75rem;">
+        <SocialLinks />
+      </div>
+    </section>
+  </body>
+</html>

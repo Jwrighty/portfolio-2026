@@ -1,0 +1,33 @@
+---
+import { site } from "../../data/site.ts";
+
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+
+const links = [
+  { label: "GitHub", href: site.social.github },
+  { label: "LinkedIn", href: site.social.linkedin },
+];
+---
+
+<nav aria-label="Social links" class:list={["flex gap-4", className]}>
+  {
+    links.map(({ label, href }) => (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        class:list={[
+          "inline-flex items-center gap-1 rounded-[2px] font-mono text-[0.72rem] leading-normal tracking-[0.04em]",
+          "text-muted transition-colors duration-200 hover:text-accent",
+          "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent",
+        ]}
+      >
+        {label}
+        <span aria-hidden="true" class="text-[0.6rem]">↗</span>
+      </a>
+    ))
+  }
+</nav>

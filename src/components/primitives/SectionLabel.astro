@@ -1,0 +1,20 @@
+---
+interface Props {
+  class?: string;
+  id?: string;
+  as?: "h2" | "p";
+}
+const { class: className, id, as = "h2" } = Astro.props;
+const TagName = as;
+---
+
+<TagName
+  id={id}
+  class:list={[
+    "mb-10 flex items-center gap-4 font-mono text-[0.68rem] uppercase tracking-[0.14em] text-muted",
+    className,
+  ]}
+>
+  <span class="shrink-0"><slot /></span>
+  <span aria-hidden="true" class="h-px flex-1 bg-border"></span>
+</TagName>
