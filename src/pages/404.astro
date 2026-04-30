@@ -1,0 +1,88 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionLabel from '../components/primitives/SectionLabel.astro';
+---
+
+<BaseLayout
+  title="Page not found"
+  description="The page you were looking for could not be found."
+  path="/404"
+>
+  <main class="not-found" aria-labelledby="not-found-title">
+    <div class="not-found__inner">
+      <SectionLabel as="p" class="not-found__label">404</SectionLabel>
+      <h1 id="not-found-title">This page slipped out of frame.</h1>
+      <p>
+        The route is missing, moved, or still waiting to be written. The homepage is the
+        shortest path back to the work.
+      </p>
+      <a href="/" class="not-found__link">Return home</a>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .not-found {
+    display: grid;
+    min-height: 100svh;
+    place-items: center;
+    padding: clamp(2rem, 8vw, var(--spacing-18)) 1.5rem;
+  }
+
+  .not-found__inner {
+    width: min(100%, 42rem);
+    border-block: 1px solid var(--color-border);
+    padding-block: clamp(2.5rem, 10vw, var(--spacing-18));
+  }
+
+  .not-found__label {
+    margin: 0 0 1rem;
+    color: var(--color-accent);
+  }
+
+  .not-found h1 {
+    margin: 0;
+    color: var(--color-white);
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 0.95;
+  }
+
+  .not-found p {
+    max-width: 32rem;
+    margin: 1.5rem 0 0;
+    color: var(--color-text);
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+
+  .not-found__link {
+    display: inline-flex;
+    align-items: center;
+    margin-block-start: 2rem;
+    border-radius: var(--radius-sm);
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+  }
+
+  .not-found__link:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+  }
+
+  @media (min-width: 48rem) {
+    .not-found h1 {
+      font-size: 6.5rem;
+    }
+
+    .not-found p {
+      font-size: 1.125rem;
+    }
+  }
+</style>
