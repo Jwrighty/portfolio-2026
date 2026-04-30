@@ -1,0 +1,28 @@
+---
+import RoleEntry from "./RoleEntry.astro";
+import type { CareerCompany } from "../../data/career";
+
+interface Props {
+  company: CareerCompany;
+}
+
+const { company } = Astro.props;
+---
+
+<section class="mb-[52px] last:mb-0" aria-labelledby={`career-company-${company.id}`}>
+  <div class="mb-[18px] flex flex-wrap items-baseline justify-between gap-4">
+    <h3
+      id={`career-company-${company.id}`}
+      class="m-0 font-sans text-[1rem] font-semibold leading-normal tracking-normal text-text"
+    >
+      {company.company}
+    </h3>
+    <p class="m-0 font-mono text-[0.67rem] leading-normal text-muted">{company.dates}</p>
+  </div>
+
+  <div class="border-l border-border pl-4">
+    {company.roles.map((role, index) => (
+      <RoleEntry role={role} isLast={index === company.roles.length - 1} />
+    ))}
+  </div>
+</section>
