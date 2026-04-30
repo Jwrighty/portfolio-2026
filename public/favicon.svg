@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Jason Wright monogram">
+  <rect width="64" height="64" rx="8" fill="#0f0f10"/>
+  <path d="M18 18h10v22c0 5.7-3.9 9.5-9.7 9.5-2.7 0-5.3-.7-7.3-2l2.4-6.9c1.2.8 2.5 1.2 3.9 1.2 2 0 3.1-1.3 3.1-3.8V25.9H18V18Z" fill="#d4d0c8"/>
+  <path d="M30.4 18h8.2l3.7 17.8L47 18h6.5l4.7 17.8L61.8 18H64v10.5l-6.2 20.2h-7.2L46.1 32l-4.5 16.7h-7.1L30.4 18Z" fill="#ddb25c"/>
+</svg>
