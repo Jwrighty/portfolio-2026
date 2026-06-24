@@ -2,7 +2,7 @@ export const site = {
   name: 'Jason Wright',
   url: 'https://jasonwright.io',
   description:
-    'Product-minded Principal Frontend Engineer building fast, scalable frontend systems that improve product quality and help teams move with confidence.',
+    'Product engineer and senior/principal-level frontend engineer building fast, scalable interfaces that improve product quality — with seven years of commercial P&L leadership behind the code.',
   social: {
     github: 'https://github.com/jwrighty',
     linkedin: 'https://www.linkedin.com/in/jaswright/',

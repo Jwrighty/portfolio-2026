@@ -37,9 +37,14 @@ const moreCount = role.achievements.length;
         </span>
         {moreCount} more
       </summary>
-      <ul class="mt-2 grid gap-1.5 pl-4 text-[0.85rem] leading-[1.65] text-muted marker:text-accent">
+      <ul class="mt-3 grid gap-3 text-[0.85rem] leading-[1.65] text-muted">
         {role.achievements.map((achievement) => (
-          <li>{achievement}</li>
+          <li class="grid grid-cols-[auto_1fr] gap-x-2.5">
+            <span aria-hidden="true" class="flex h-[1.65em] select-none items-center text-accent">
+              <span class="block h-px w-2.5 bg-current"></span>
+            </span>
+            <span>{achievement}</span>
+          </li>
         ))}
       </ul>
     </details>
