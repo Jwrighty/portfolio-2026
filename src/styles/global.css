@@ -150,11 +150,15 @@ a {
   .disclosure-details::details-content {
     block-size: 0;
     overflow: clip;
-    transition: block-size 200ms ease;
+    content-visibility: hidden;
+    transition:
+      block-size 200ms ease,
+      content-visibility 200ms allow-discrete;
   }
 
   .disclosure-details[open]::details-content {
     block-size: auto;
+    content-visibility: visible;
   }
 }
 
