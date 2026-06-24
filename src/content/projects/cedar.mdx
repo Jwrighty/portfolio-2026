@@ -1,0 +1,21 @@
+---
+title: "Cedar Design System"
+description: "An accessible, themeable React design system — built on a framework-neutral token pipeline, published to npm, and designed to be consumed by AI agents as well as people."
+status: "Published"
+stack:
+  - "React"
+  - "TypeScript"
+  - "React Aria"
+  - "Style Dictionary"
+  - "CSS Modules"
+  - "Storybook"
+liveUrl: "https://main--6a393989afa7ada24819272a.chromatic.com/"
+repoUrl: "https://github.com/Jwrighty/cedar-ui"
+draft: false
+---
+
+Cedar is a design system I built to be installed and consumed like any real dependency — not a pile of components copied between projects. It ships as two published npm packages: `@jwrighty/cedar-tokens`, a framework-neutral DTCG token source compiled by Style Dictionary into CSS custom properties and typed exports, and `@jwrighty/cedar-react`, components built on React Aria and styled with CSS Modules against those tokens. The result is end-to-end ownership of the whole seam: tokens, components, theming, tests, CI, release, and a hosted Storybook.
+
+The architecture is deliberate and documented in a set of ADRs. Tokens are layered in three tiers — base, semantic, and component — so the entire UI can be re-skinned at runtime by swapping a single `data-theme` attribute, with light, dark, and a brand theme driven purely by CSS custom properties. Components lean on React Aria for accessibility rather than reinventing it, and every component is covered by unit and accessibility tests. Releases run through Changesets, publishing the bumped packages to npm and the gallery to Chromatic.
+
+The angle I find most interesting is making Cedar consumable by AI coding agents, not just people. Each component carries co-located usage metadata — when to use it, when to reach for something else, accessibility notes, related components — as a single source of truth that feeds both human docs and machine-readable artefacts like an `llms.txt`, a generated manifest, and an MCP server. The aim is to stop agents hallucinating APIs, misusing components, or hardcoding values that should come from the token scale.
