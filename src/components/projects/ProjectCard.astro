@@ -9,7 +9,7 @@ interface Props {
 }
 
 const { project } = Astro.props;
-const { title, description, stack, liveUrl, repoUrl, coverImage, screenshots } =
+const { title, description, status, stack, liveUrl, repoUrl, coverImage, screenshots } =
   project.data;
 const detail = project.body?.trim().split(/\n\s*\n/)[0] ?? description;
 const images = [coverImage, ...(screenshots ?? [])].filter((image) => image != null);
@@ -24,11 +24,20 @@ const isPortrait = images.length > 0 && images.every((image) => image.height > i
     ]}
   >
     <div class="mb-2.5">
-      <div class="mb-1 flex items-center gap-2.5">
-        <h3 class="m-0 font-sans text-[1rem] font-semibold leading-normal tracking-normal text-text">
-          {title}
-        </h3>
-        {liveUrl && <ExternalLink href={liveUrl} class="text-accent">Live</ExternalLink>}
+      <div class="mb-1 flex items-baseline justify-between gap-5">
+        <div class="flex items-baseline gap-2.5">
+          <h3 class="m-0 font-sans text-[1rem] font-semibold leading-normal tracking-normal text-text">
+            {title}
+          </h3>
+          {status && (
+            <span class="font-mono text-[0.64rem] leading-normal text-muted">
+              {status}
+            </span>
+          )}
+        </div>
+        {liveUrl && (
+          <ExternalLink href={liveUrl} class="shrink-0 text-accent">View</ExternalLink>
+        )}
       </div>
       <p class="m-0 text-[0.83rem] italic leading-[1.5] text-muted">
         {description}
