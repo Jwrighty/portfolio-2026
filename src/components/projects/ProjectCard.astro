@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import { Image } from "astro:assets";
+import { render } from "astro:content";
 import ExternalLink from "../primitives/ExternalLink.astro";
 import Tag from "../primitives/Tag.astro";
 
@@ -9,9 +10,9 @@ interface Props {
 }
 
 const { project } = Astro.props;
-const { title, description, status, stack, liveUrl, repoUrl, coverImage, screenshots } =
+const { title, description, status, stack, liveUrl, repoUrl, npmUrl, coverImage, screenshots } =
   project.data;
-const detail = project.body?.trim().split(/\n\s*\n/)[0] ?? description;
+const { Content } = await render(project);
 const images = [coverImage, ...(screenshots ?? [])].filter((image) => image != null);
 const isPortrait = images.length > 0 && images.every((image) => image.height > image.width);
 ---
@@ -95,16 +96,35 @@ const isPortrait = images.length > 0 && images.every((image) => image.height > i
             ))}
           </div>
         )}
-        <p class="m-0 text-[0.86rem] leading-[1.75] text-muted [text-wrap:pretty]">
-          {detail}
-        </p>
-        {(liveUrl || repoUrl) && (
+        <div class="project-body text-[0.86rem] leading-[1.75] text-muted [text-wrap:pretty]">
+          <Content />
+        </div>
+        {(liveUrl || repoUrl || npmUrl) && (
           <div class="mt-4 flex flex-wrap gap-x-4 gap-y-2" aria-label={`${title} links`}>
             {liveUrl && <ExternalLink href={liveUrl}>Live site</ExternalLink>}
             {repoUrl && <ExternalLink href={repoUrl}>Repository</ExternalLink>}
+            {npmUrl && <ExternalLink href={npmUrl}>npm</ExternalLink>}
           </div>
         )}
       </div>
     </details>
   </div>
 </article>
+
+<style>
+  .project-body :global(p) {
+    margin: 0;
+  }
+  .project-body :global(p + p) {
+    margin-top: 0.9em;
+  }
+  .project-body :global(strong) {
+    color: var(--color-text);
+    font-weight: 600;
+  }
+  .project-body :global(code) {
+    font-family: var(--font-mono, ui-monospace, monospace);
+    font-size: 0.9em;
+    color: var(--color-text);
+  }
+</style>

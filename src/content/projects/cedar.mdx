@@ -1,7 +1,8 @@
 ---
-title: "Cedar Design System"
+title: "Cedar UI - Design System"
 description: "An accessible, themeable React design system — built on a framework-neutral token pipeline, published to npm, and designed to be consumed by AI agents as well as people."
 status: "Published"
+order: 1
 stack:
   - "React"
   - "TypeScript"
@@ -14,7 +15,7 @@ repoUrl: "https://github.com/Jwrighty/cedar-ui"
 draft: false
 ---
 
-Cedar is a design system I built to be installed and consumed like any real dependency — not a pile of components copied between projects. It ships as two published npm packages: `@jwrighty/cedar-tokens`, a framework-neutral DTCG token source compiled by Style Dictionary into CSS custom properties and typed exports, and `@jwrighty/cedar-react`, components built on React Aria and styled with CSS Modules against those tokens. The result is end-to-end ownership of the whole seam: tokens, components, theming, tests, CI, release, and a hosted Storybook.
+Cedar is a design system I built to explore both creating a design system from scratch and making it agent ready. It ships as two published npm packages: `@jwrighty/cedar-tokens`, a framework-neutral DTCG token source compiled by Style Dictionary into CSS custom properties and typed exports, and `@jwrighty/cedar-react`, components built on React Aria and styled with CSS Modules against those tokens. The result is end-to-end ownership of the whole seam: tokens, components, theming, tests, CI, release, and a hosted Storybook.
 
 The architecture is deliberate and documented in a set of ADRs. Tokens are layered in three tiers — base, semantic, and component — so the entire UI can be re-skinned at runtime by swapping a single `data-theme` attribute, with light, dark, and a brand theme driven purely by CSS custom properties. Components lean on React Aria for accessibility rather than reinventing it, and every component is covered by unit and accessibility tests. Releases run through Changesets, publishing the bumped packages to npm and the gallery to Chromatic.
 

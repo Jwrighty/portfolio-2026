@@ -1,7 +1,8 @@
 ---
-title: "Observe"
-description: "An LLM/agent observability dashboard — the flagship product built on my own Cedar design system, where the choreography of data arriving is the whole point: RSC streaming, Suspense, and motion-led loading."
+title: "Cedar Observe"
+description: "An LLM/agent observability dashboard — a demo built on my own Cedar design system, where the choreography of data arriving is the whole point: RSC streaming, Suspense, and motion-led loading."
 status: "In development"
+order: 2
 stack:
   - "Next.js"
   - "React 19 (RSC)"
@@ -16,8 +17,8 @@ draft: false
 coverImage: ../../assets/projects/observe-dark.png
 ---
 
-observe is an LLM/agent observability dashboard, built as the flagship consumer of my own Cedar design system. It gives an operator the at-a-glance health of their agent runs — volume, success rate, cost, p95 latency — and lets them drill into any single run to see exactly where time and tokens went. The domain is chosen deliberately: streaming is native to the data, so the modern-React demos are real rather than contrived, and an agent trace is a literal waterfall — the loading choreography and the data visualisation turn out to be the same shape.
+Observe is a demo LLM/agent observability dashboard, built as the flagship consumer of my own Cedar design system and as a way to demonstrate my UI and motion craft. The domain is chosen deliberately: streaming is native to the data, so the modern-React demos are real rather than contrived, and an agent trace is a literal waterfall — the loading choreography and the data visualisation turn out to be the same shape.
 
 The thesis of the piece is that the choreography of data _arriving_ is craft worth foregrounding. Each of the three surfaces demonstrates a distinct loading pattern inside a persistent dashboard shell: an **Overview** of RSC-streamed aggregates whose per-widget Suspense boundaries resolve in a deliberately tuned order so you read the most important numbers first; a **live feed** — a virtualised table that appends new runs over SSE with one optimistic mutation; and a **trace detail** span waterfall that draws in as the trace "executes," with token-by-token streaming in the message panel, opened as a shared-element overlay and deep-linkable as a full page. Skeletons occupy the exact final size, so content fades in without anything shifting under your eyes.
 
-All the data is mocked by a seeded, deterministic generator feeding Next route handlers with tuned latencies — so the demo is reproducible and the resolution _order_ is itself a design decision, and the same generator backs the tests and Storybook. The angle I find most interesting is what building it did to Cedar: a real, dense, motion-rich product is the honest pressure test for a design system, and shipping observe drove net-new semantic motion tokens, status colours, a chart palette, and a handful of new primitives and composed components. The product-craft story and the design-system-ownership story end up reinforcing each other from one body of work. Accessibility is treated as part of the craft, not a bolt-on — keyboard, focus, contrast, and a reduced-motion path through all of it.
+All the data is mocked by a seeded, deterministic generator feeding Next route handlers with tuned latencies — so the demo is reproducible and the resolution _order_ is itself a design decision, and the same generator backs the tests and Storybook.

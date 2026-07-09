@@ -1,0 +1,24 @@
+---
+title: "ds-bench"
+description: "A static CLI audit that scores how ready a design system is for AI coding agents."
+status: "Published"
+order: 3
+stack:
+  - "TypeScript"
+  - "Node.js"
+  - "CLI"
+  - "Design Systems"
+  - "Developer Tools"
+repoUrl: "https://github.com/Jwrighty/ds-bench"
+npmUrl: "https://www.npmjs.com/package/ds-bench"
+draft: false
+coverImage: ../../assets/projects/ds-bench-report.svg
+---
+
+While building Cedar to be agent-ready, I found the field had plenty of advice scattered across posts, talks, and other systems' write-ups — but no way to measure a system, track progress, or turn those learnings into concrete recommendations. ds-bench is that instrument.
+
+AI coding agents fail against design systems in predictable ways — invented props, wrong import paths, recreated components, hardcoded values, deprecated patterns. ds-bench turns the signals that prevent those failures into a measurable score.
+
+`npx ds-bench audit <path>` statically analyzes a local design-system checkout — no AI, no network, deterministic — and produces a 0–100 Agent-Readiness Score across six weighted categories (docs & examples, API clarity, usage guidance, token hygiene, deprecation signalling, agent metadata). Findings are severity-ranked, each with a concrete fix and a "receipt": a citation to the documented agent-failure mode the check prevents. The report is a to-do list, not a judgment — fix, re-run, measure the delta via the versioned JSON contract.
+
+The methodology is published with the tool: a versioned rubric (ARS v0.2, 22 checks) calibrated against audits of Material UI, Chakra UI, Shopify Polaris, and Cedar, with the PRD, architecture decision records, check rationale, and pilot reports all in the repo.
