@@ -3,8 +3,6 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
-import Rule from '../components/primitives/Rule.astro';
-import SectionLabel from '../components/primitives/SectionLabel.astro';
 import CompanyBlock from '../components/career/CompanyBlock.astro';
 import ProjectCard from '../components/projects/ProjectCard.astro';
 import { career } from '../data/career';
@@ -23,20 +21,41 @@ const projects = (await getCollection('projects'))
   description="Senior product-minded frontend engineer moving from Tokyo to London in 2026 — building polished product interfaces and testing agentic workflows, with seven years of commercial leadership behind the code."
   path="/"
 >
-  <main class="mx-auto max-w-[768px] px-8 pb-[120px] pt-[108px] max-sm:px-6 max-sm:py-16">
+  <main
+    class="mx-auto max-w-[60rem] px-8 pb-[120px] pt-[clamp(4rem,10vh,7rem)] max-sm:px-6 max-sm:pb-20"
+  >
     <Header />
-    <section class="mb-[72px] mt-[60px]" aria-labelledby="career-heading">
-      <SectionLabel id="career-heading">Work</SectionLabel>
+
+    <section
+      class="mt-24 grid gap-y-7 max-sm:mt-16 lg:grid-cols-[9.5rem_minmax(0,42rem)] lg:gap-x-12"
+      aria-labelledby="career-heading"
+    >
+      <h2
+        id="career-heading"
+        class="m-0 self-start font-display text-[1.1rem] font-semibold leading-none tracking-[-0.01em] text-white lg:sticky lg:top-12"
+      >
+        <span aria-hidden="true" class="mr-1.5 text-accent">/</span>Work
+      </h2>
       <div>
         {career.map((company) => <CompanyBlock company={company} />)}
       </div>
     </section>
-    <section class="mb-[72px] mt-[60px]" aria-labelledby="projects-heading">
-      <SectionLabel id="projects-heading">Projects</SectionLabel>
-      <div class="flex flex-col gap-3.5">
+
+    <section
+      class="mt-30 grid gap-y-7 max-sm:mt-20 lg:grid-cols-[9.5rem_minmax(0,42rem)] lg:gap-x-12"
+      aria-labelledby="projects-heading"
+    >
+      <h2
+        id="projects-heading"
+        class="m-0 self-start font-display text-[1.1rem] font-semibold leading-none tracking-[-0.01em] text-white lg:sticky lg:top-12"
+      >
+        <span aria-hidden="true" class="mr-1.5 text-accent">/</span>Projects
+      </h2>
+      <div class="flex flex-col">
         {projects.map((project) => <ProjectCard project={project} />)}
       </div>
     </section>
-    <Footer />
+
+    <Footer class="mt-30 max-sm:mt-20" />
   </main>
 </BaseLayout>

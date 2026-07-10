@@ -10,9 +10,8 @@
   "dependencies": {
     "@astrojs/mdx": "^4.2.0",
     "@astrojs/sitemap": "^3.7.2",
-    "@fontsource/cormorant-garamond": "^5.2.11",
-    "@fontsource/inter": "^5.2.8",
-    "@fontsource/jetbrains-mono": "^5.2.8",
+    "@fontsource-variable/bricolage-grotesque": "^5.2.10",
+    "@fontsource/fragment-mono": "^5.2.8",
     "@tailwindcss/vite": "^4.2.4",
     "@vercel/analytics": "^2.0.1",
     "astro": "^5.7.0",

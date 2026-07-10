@@ -3,98 +3,64 @@
 /* ── Self-hosted fonts ──────────────────────────────────────────────── */
 
 @font-face {
-  font-family: "Cormorant Garamond";
+  font-family: "Bricolage Grotesque";
   font-style: normal;
-  font-weight: 400;
+  font-weight: 200 800;
   font-display: swap;
-  src: url("/fonts/cormorant-garamond-latin-400-normal.woff2") format("woff2");
+  src: url("/fonts/bricolage-grotesque-latin-opsz-normal.woff2") format("woff2-variations");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
     U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191,
     U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 @font-face {
-  font-family: "Cormorant Garamond";
+  font-family: "Fragment Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/fragment-mono-latin-400-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191,
+    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Fragment Mono";
   font-style: italic;
   font-weight: 400;
   font-display: swap;
-  src: url("/fonts/cormorant-garamond-latin-400-italic.woff2") format("woff2");
+  src: url("/fonts/fragment-mono-latin-400-italic.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
     U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191,
     U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
+/* Metric-matched fallback to minimise swap shift for the display face */
 @font-face {
-  font-family: "Cormorant Garamond";
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url("/fonts/cormorant-garamond-latin-600-normal.woff2") format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191,
-    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
-@font-face {
-  font-family: "Cormorant Garamond";
-  font-style: italic;
-  font-weight: 600;
-  font-display: swap;
-  src: url("/fonts/cormorant-garamond-latin-600-italic.woff2") format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191,
-    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
-@font-face {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("/fonts/inter-latin-400-normal.woff2") format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191,
-    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
-@font-face {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url("/fonts/inter-latin-500-normal.woff2") format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191,
-    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
-@font-face {
-  font-family: "JetBrains Mono";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("/fonts/jetbrains-mono-latin-400-normal.woff2") format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191,
-    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  font-family: "Bricolage Fallback";
+  src: local("Arial");
+  size-adjust: 103%;
+  ascent-override: 94%;
+  descent-override: 24%;
+  line-gap-override: 0%;
 }
 
 /* ── Design tokens ──────────────────────────────────────────────────── */
 
 @theme {
-  /* Colours */
-  --color-bg:       #0f0f10;
-  --color-surface:  #1a1a1c;
-  --color-border:   #2e2e32;
-  --color-text:     #d4d0c8;   /* warm grey — body copy */
-  --color-muted:    #8a8680;   /* ≥ 4.5:1 on #0f0f10 */
-  --color-accent:   oklch(0.78 0.11 75);  /* warm gold */
-  --color-white:    #ffffff;
+  /* Colours — cool near-black stage, vermilion signal */
+  --color-bg:      oklch(0.145 0.008 262);
+  --color-surface: oklch(0.185 0.01 262);
+  --color-border:  oklch(0.30 0.012 262);
+  --color-text:    oklch(0.88 0.006 262);
+  --color-muted:   oklch(0.70 0.01 262);
+  --color-accent:  oklch(0.70 0.185 32);   /* vermilion — text-safe on bg */
+  --color-white:   #ffffff;
 
   /* Typography */
-  --font-display: "Cormorant Garamond", "Georgia", serif;
-  --font-sans:    "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-mono:    "JetBrains Mono", ui-monospace, "Menlo", monospace;
+  --font-display: "Bricolage Grotesque", "Bricolage Fallback", system-ui, sans-serif;
+  --font-sans:    "Bricolage Grotesque", "Bricolage Fallback", system-ui, sans-serif;
+  --font-mono:    "Fragment Mono", ui-monospace, "Menlo", monospace;
 
   /* Spacing scale (augments Tailwind defaults) */
   --spacing-18: 4.5rem;
@@ -106,6 +72,11 @@
   --radius-md:  0.5rem;
   --radius-lg:  1rem;
   --radius-pill: 9999px;
+
+  /* Motion */
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out-expo:  cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* ── Base styles ────────────────────────────────────────────────────── */
@@ -119,7 +90,10 @@ html {
   color: var(--color-text);
   font-family: var(--font-sans);
   font-size: 17px;
-  line-height: 1.75;
+  line-height: 1.7;
+  letter-spacing: 0.01em; /* light-on-dark compensation */
+  font-optical-sizing: auto;
+  font-kerning: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -130,14 +104,98 @@ body {
   background: var(--color-bg);
 }
 
+h1, h2, h3 {
+  text-wrap: balance;
+}
+
 a {
   color: inherit;
   text-decoration: none;
 }
 
 ::selection {
-  background: color-mix(in oklch, var(--color-accent), transparent 72%);
-  color: var(--color-white);
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+/* ── Entrance choreography ──────────────────────────────────────────── */
+/*
+ * One orchestrated page-load, header only. Content is visible by default
+ * for no-JS and reduced-motion; the keyframes run automatically on load
+ * and always end at the visible state.
+ */
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(1.1em);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes settle-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Masked line rise for the display name */
+.reveal-mask {
+  display: block;
+  overflow: hidden;
+}
+
+.reveal-line {
+  display: block;
+  animation: rise-in 700ms var(--ease-out-quint) both;
+  animation-delay: var(--reveal-delay, 0ms);
+}
+
+/* Staggered settle for header metadata: --i sets the step */
+.settle {
+  animation: settle-in 600ms var(--ease-out-quint) both;
+  animation-delay: calc(240ms + var(--i, 0) * 70ms);
+}
+
+/* ── Link underline: draws in from the left on hover ────────────────── */
+
+.draw-link {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: left 100%;
+  background-size: 0% 1px;
+  transition:
+    background-size 250ms var(--ease-out-quart),
+    color 200ms var(--ease-out-quart);
+}
+
+.draw-link:hover {
+  background-size: 100% 1px;
+}
+
+/* ── Availability signal ────────────────────────────────────────────── */
+
+@keyframes status-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+.status-dot {
+  animation: status-pulse 2.6s var(--ease-out-quart) infinite;
 }
 
 /* ── Native details disclosure motion ───────────────────────────────── */
@@ -147,13 +205,19 @@ a {
     interpolate-size: allow-keywords;
   }
 
+  /*
+   * overflow: hidden (not clip) — hidden establishes a formatting context,
+   * so child margins are contained in the animated block-size instead of
+   * collapsing through and vanishing when content-visibility flips at the
+   * end of the collapse.
+   */
   .disclosure-details::details-content {
     block-size: 0;
-    overflow: clip;
+    overflow: hidden;
     content-visibility: hidden;
     transition:
-      block-size 200ms ease,
-      content-visibility 200ms allow-discrete;
+      block-size 320ms var(--ease-out-quint),
+      content-visibility 320ms allow-discrete;
   }
 
   .disclosure-details[open]::details-content {
@@ -162,38 +226,12 @@ a {
   }
 }
 
-/* ── Shimmer text ───────────────────────────────────────────────────── */
-
-.shimmer {
-  --shimmer-duration: 4s;          /* full cycle */
-  --shimmer-sweep-fraction: 0.9;   /* portion of cycle the sheen is moving */
-  --shimmer-highlight: #ffffff;
-
-  background-color: currentColor;
-  background-image: linear-gradient(
-    100deg,
-    transparent 40%,
-    var(--shimmer-highlight) 50%,
-    transparent 60%
-  );
-  background-size: 200% 100%;
-  background-repeat: no-repeat;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: shimmer var(--shimmer-duration) cubic-bezier(0.2, 1, var(--shimmer-sweep-fraction), 1) infinite;
-}
-
-@keyframes shimmer {
-  from { background-position: 200% 0; }
-  to   { background-position: -100% 0; }
-}
-
 /* ── Reduced motion ─────────────────────────────────────────────────── */
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
+    animation-delay: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
