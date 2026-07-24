@@ -20,20 +20,20 @@ const isPortrait = images.length > 0 && images.every((image) => image.height > i
 <article class="border-t border-border py-8 first:border-t-0 first:pt-0 last:pb-0">
   <div class="mb-1 flex items-baseline justify-between gap-5">
     <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-      <h3 class="m-0 font-display text-[1.2rem] font-semibold leading-snug tracking-[-0.01em] text-white">
+      <h3 class="m-0 font-display text-headline font-semibold leading-snug tracking-[-0.01em] text-white">
         {title}
       </h3>
       {status && (
-        <span class="font-mono text-[0.66rem] leading-normal text-muted">
+        <span class="font-mono text-label leading-normal text-muted">
           {status}
         </span>
       )}
     </div>
     {liveUrl && (
-      <ExternalLink href={liveUrl} class="shrink-0 text-accent">View</ExternalLink>
+      <ExternalLink href={liveUrl} tone="accent" class="shrink-0">Visit</ExternalLink>
     )}
   </div>
-  <p class="m-0 max-w-[38rem] text-[0.9rem] leading-[1.65] text-muted [text-wrap:pretty]">
+  <p class="m-0 max-w-[38rem] text-copy leading-[1.65] text-muted [text-wrap:pretty]">
     {description}
   </p>
 
@@ -48,15 +48,15 @@ const isPortrait = images.length > 0 && images.every((image) => image.height > i
   <details class="group disclosure-details mt-4 text-muted">
     <summary
       class:list={[
-        "flex w-fit cursor-pointer list-none items-center gap-1.5 rounded-[2px]",
-        "font-mono text-[0.68rem] leading-normal tracking-[0.06em] text-accent transition-colors duration-200",
+        "tap-target flex w-fit cursor-pointer list-none items-center gap-1.5 rounded-[2px]",
+        "font-mono text-label leading-normal tracking-[0.06em] text-accent transition-colors duration-200",
         "hover:text-white",
         "[&::-webkit-details-marker]:hidden",
       ]}
     >
       <span
         aria-hidden="true"
-        class="text-[0.58rem] transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-open:rotate-180"
+        class="text-micro transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-open:rotate-180"
       >
         ▾
       </span>
@@ -91,12 +91,11 @@ const isPortrait = images.length > 0 && images.every((image) => image.height > i
           ))}
         </div>
       )}
-      <div class="project-body max-w-[38rem] text-[0.88rem] leading-[1.7] text-muted [text-wrap:pretty]">
+      <div class="project-body max-w-[38rem] text-copy leading-[1.7] text-muted [text-wrap:pretty]">
         <Content />
       </div>
-      {(liveUrl || repoUrl || npmUrl) && (
+      {(repoUrl || npmUrl) && (
         <div class="mt-4 flex flex-wrap gap-x-4 gap-y-2" aria-label={`${title} links`}>
-          {liveUrl && <ExternalLink href={liveUrl}>Live site</ExternalLink>}
           {repoUrl && <ExternalLink href={repoUrl}>Repository</ExternalLink>}
           {npmUrl && <ExternalLink href={npmUrl}>npm</ExternalLink>}
         </div>

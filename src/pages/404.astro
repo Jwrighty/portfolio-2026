@@ -24,7 +24,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         The route is missing, moved, or still waiting to be written. The homepage is the
         shortest path back to the work.
       </p>
-      <a href="/" class="not-found__link settle draw-link" style="--i: 1">Return home</a>
+      <a href="/" class="not-found__link tap-target settle draw-link" style="--i: 1">Return home</a>
     </div>
   </main>
 </BaseLayout>
@@ -45,7 +45,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     margin: 0 0 1.25rem;
     color: var(--color-muted);
     font-family: var(--font-mono);
-    font-size: 0.74rem;
+    font-size: var(--text-meta);
     letter-spacing: 0.02em;
   }
 
@@ -58,7 +58,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     margin: 0;
     color: var(--color-white);
     font-family: var(--font-display);
-    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    font-size: var(--text-display-sm);
     font-weight: 700;
     letter-spacing: -0.02em;
     line-height: 0.98;
@@ -68,18 +68,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     max-width: 32rem;
     margin: 1.75rem 0 0;
     color: var(--color-text);
-    font-size: 0.98rem;
+    font-size: var(--text-lead);
     line-height: 1.75;
   }
 
   .not-found__link {
+    position: relative;
     display: inline-flex;
     align-items: center;
     margin-block-start: 2.25rem;
     border-radius: 2px;
     color: var(--color-accent);
     font-family: var(--font-mono);
-    font-size: 0.8rem;
+    font-size: var(--text-meta);
     line-height: 1.5;
   }
 

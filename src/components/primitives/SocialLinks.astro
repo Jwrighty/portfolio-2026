@@ -20,14 +20,14 @@ const links = [
         target="_blank"
         rel="noopener noreferrer"
         class:list={[
-          "group/link inline-flex items-center gap-1 rounded-[2px] font-mono text-[0.72rem] leading-normal tracking-[0.04em]",
+          "group/link tap-target inline-flex items-center gap-1 rounded-[2px] font-mono text-meta leading-normal tracking-[0.04em]",
           "draw-link text-muted hover:text-accent",
         ]}
       >
         {label}
         <span
           aria-hidden="true"
-          class="text-[0.6rem] transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/link:-translate-y-[2px] group-hover/link:translate-x-[2px]"
+          class="text-micro transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/link:-translate-y-[2px] group-hover/link:translate-x-[2px]"
         >
           ↗
         </span>
