@@ -62,6 +62,18 @@
   --font-sans:    "Bricolage Grotesque", "Bricolage Fallback", system-ui, sans-serif;
   --font-mono:    "Fragment Mono", ui-monospace, "Menlo", monospace;
 
+  /* Type scale — the documented ramp (see DESIGN.md §3). Named by role, not size. */
+  --text-display:    clamp(3rem, 9vw, 5.25rem); /* hero name */
+  --text-display-sm: clamp(2.5rem, 8vw, 4.5rem); /* 404 headline */
+  --text-headline:   1.2rem;   /* project titles */
+  --text-section:    1.1rem;   /* section headings, company names */
+  --text-role:       0.92rem;  /* role titles */
+  --text-lead:       0.98rem;  /* lead paragraph, 404 body */
+  --text-copy:       0.88rem;  /* descriptions, achievements, panel body */
+  --text-meta:       0.72rem;  /* link labels, header metadata */
+  --text-label:      0.66rem;  /* tags, dates, status, disclosure triggers */
+  --text-micro:      0.6rem;   /* caret and arrow glyphs */
+
   /* Spacing scale (augments Tailwind defaults) */
   --spacing-18: 4.5rem;
   --spacing-22: 5.5rem;
@@ -108,9 +120,13 @@ h1, h2, h3 {
   text-wrap: balance;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+/* Layered so Tailwind color utilities (text-accent / text-muted, later layer)
+   win over this reset; unlayered, it would clobber every link's color. */
+@layer base {
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 }
 
 ::selection {
@@ -185,6 +201,25 @@ a {
 
 .draw-link:hover {
   background-size: 100% 1px;
+}
+
+/* ── Expanded pointer target ─────────────────────────────────────────── */
+/*
+ * Guarantees a ≥24px hit area (WCAG 2.2 SC 2.5.8) on small inline controls
+ * without altering their visual box or text baseline — the band is an
+ * absolutely-positioned pseudo-element, so layout and baseline are untouched.
+ */
+.tap-target {
+  position: relative;
+}
+
+.tap-target::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: 50%;
+  height: max(100%, 24px);
+  transform: translateY(-50%);
 }
 
 /* ── Availability signal ────────────────────────────────────────────── */

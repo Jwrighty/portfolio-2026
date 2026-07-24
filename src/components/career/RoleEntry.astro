@@ -13,12 +13,12 @@ const moreCount = role.achievements.length;
 
 <article class:list={["grid gap-2", !isLast && "mb-7"]}>
   <header class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-    <h4 class="m-0 font-sans text-[0.92rem] font-medium leading-normal tracking-normal text-text">
+    <h4 class="m-0 font-sans text-role font-medium leading-normal tracking-normal text-text">
       {role.title}
     </h4>
   </header>
 
-  <p class="m-0 text-[0.85rem] leading-[1.65] text-muted">
+  <p class="m-0 text-copy leading-[1.65] text-muted">
     {role.headline}
   </p>
 
@@ -26,18 +26,18 @@ const moreCount = role.achievements.length;
     <details class="group disclosure-details text-muted">
       <summary
         class:list={[
-          "mt-1 flex w-fit cursor-pointer list-none items-center gap-1.5 rounded-[2px]",
-          "font-mono text-[0.66rem] leading-normal tracking-[0.06em] text-accent transition-colors duration-200",
+          "tap-target mt-1 flex w-fit cursor-pointer list-none items-center gap-1.5 rounded-[2px]",
+          "font-mono text-label leading-normal tracking-[0.06em] text-accent transition-colors duration-200",
           "hover:text-text focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent",
           "[&::-webkit-details-marker]:hidden",
         ]}
       >
-        <span aria-hidden="true" class="text-[0.58rem] transition-transform duration-200 group-open:rotate-180">
+        <span aria-hidden="true" class="text-micro transition-transform duration-200 group-open:rotate-180">
           ▾
         </span>
-        {moreCount} more
+        Highlights
       </summary>
-      <ul class="grid gap-3 pt-3 text-[0.85rem] leading-[1.65] text-muted">
+      <ul class="grid gap-3 pt-3 text-copy leading-[1.65] text-muted">
         {role.achievements.map((achievement) => (
           <li class="grid grid-cols-[auto_1fr] gap-x-2.5">
             <span aria-hidden="true" class="flex h-[1.65em] select-none items-center text-accent">

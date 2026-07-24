@@ -13,11 +13,11 @@ const { company } = Astro.props;
   <div class="mb-[18px] flex flex-wrap items-baseline justify-between gap-4">
     <h3
       id={`career-company-${company.id}`}
-      class="m-0 font-display text-[1.05rem] font-semibold leading-normal tracking-[-0.01em] text-white"
+      class="m-0 font-display text-section font-semibold leading-normal tracking-[-0.01em] text-white"
     >
       {company.company}
     </h3>
-    <p class="m-0 font-mono text-[0.67rem] leading-normal text-muted">{company.dates}</p>
+    <p class="m-0 font-mono text-label leading-normal text-muted">{company.dates}</p>
   </div>
 
   <div class="border-l border-border pl-4">
