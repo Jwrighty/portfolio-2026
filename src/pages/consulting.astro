@@ -1,0 +1,184 @@
+---
+import { getEntry } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SelectedWork from '../components/consulting/SelectedWork.astro';
+import SocialLinks from '../components/primitives/SocialLinks.astro';
+import TextLink from '../components/primitives/TextLink.astro';
+import { site } from '../data/site';
+
+const keelty = await getEntry('projects', 'keelty-thatching');
+if (!keelty) {
+  throw new Error('Consulting page: the "keelty-thatching" project entry is missing.');
+}
+
+const services = [
+  {
+    name: 'Small-business websites',
+    detail:
+      'A complete website, designed and built from scratch — the structure and wording, the visual design, and the finished, fast-loading site. For businesses that need a clear presence and an easy way for customers to get in touch.',
+  },
+  {
+    name: 'Frontend consulting',
+    detail:
+      'Hands-on work on an existing web application or product interface: building features, improving the interface layer, and working alongside an in-house team. Backed by eight years of commercial React, TypeScript and Next.js work.',
+  },
+  {
+    name: 'Focused website improvements',
+    detail:
+      'A targeted pass over a site you already have — page speed, accessibility, technical SEO, behaviour on phones and tablets, and the usability details that decide whether a visitor stays or leaves.',
+  },
+];
+
+const keeltyContributions = [
+  {
+    label: 'Structure',
+    detail:
+      'Organised the site around the services the business actually sells — re-thatching, re-ridging and maintenance — with a gallery of completed work and direct contact paths.',
+  },
+  {
+    label: 'Visual design',
+    detail:
+      "A warm, heritage-led identity, held deliberately restrained so the client's own photography of the trade stays centre stage.",
+  },
+  {
+    label: 'Development',
+    detail:
+      'Built from the ground up in Astro with Tailwind CSS and Radix UI primitives, using Framer Motion for considered, lightweight motion.',
+  },
+  {
+    label: 'Performance and technical SEO',
+    detail:
+      'Fast loads, clean semantics and strong Lighthouse scores across the board, so the site is quick on a phone and legible to search engines.',
+  },
+];
+
+const businessDetails = [
+  { term: 'Proprietor', detail: site.business.proprietor },
+  { term: 'Business activity', detail: site.business.activity },
+  { term: 'Location', detail: site.business.location },
+  { term: 'Contact', detail: site.email, href: `mailto:${site.email}` },
+  { term: 'Availability', detail: site.business.availability },
+];
+
+const sectionHeading =
+  'm-0 self-start font-display text-section font-semibold leading-none tracking-[-0.01em] text-white lg:sticky lg:top-12';
+const sectionGrid =
+  'mt-30 grid gap-y-7 max-sm:mt-20 lg:grid-cols-[9.5rem_minmax(0,42rem)] lg:gap-x-12';
+---
+
+<BaseLayout
+  title="Web Design & Frontend Consulting"
+  description="Independent web designer and frontend consultant based in Meguro, Tokyo, building clear, high-performing websites and product interfaces."
+  path="/consulting"
+>
+  <main
+    class="mx-auto max-w-[60rem] px-8 pb-[120px] pt-[clamp(4rem,10vh,7rem)] max-sm:px-6 max-sm:pb-20"
+  >
+    <header>
+      <p
+        class="settle m-0 font-mono text-label uppercase tracking-[0.14em] text-muted"
+        style="--i: 0"
+      >
+        {site.business.proprietor}
+      </p>
+
+      <h1
+        class="mt-6 max-w-[16ch] font-display text-display-sm font-bold leading-[0.98] tracking-[-0.02em] text-white"
+      >
+        <span class="reveal-mask">
+          <span class="reveal-line">Web design &amp;</span>
+        </span>
+        <span class="reveal-mask">
+          <span class="reveal-line" style="--reveal-delay: 90ms">frontend consulting</span>
+        </span>
+      </h1>
+
+      <p
+        class="settle mb-0 mt-8 max-w-[36rem] text-lead leading-[1.75] text-text [text-wrap:pretty]"
+        style="--i: 1"
+      >
+        I design and build clear, high-performing websites and product interfaces for small
+        businesses and product teams.
+      </p>
+
+      <p
+        class="settle mb-0 mt-7 font-mono text-meta leading-[1.6] tracking-[0.02em] text-muted"
+        style="--i: 2"
+      >
+        Based in {site.business.location} · {site.business.availability}
+      </p>
+
+      <div class="settle mt-9 flex flex-wrap items-center gap-x-6 gap-y-3" style="--i: 3">
+        <TextLink href={`mailto:${site.email}`} tone="accent">Discuss a project</TextLink>
+        <TextLink href="/">Back to portfolio</TextLink>
+      </div>
+    </header>
+
+    <section class={sectionGrid} aria-labelledby="services-heading">
+      <h2 id="services-heading" class={sectionHeading}>
+        <span aria-hidden="true" class="mr-1.5 text-accent">/</span>Services
+      </h2>
+      <ul class="m-0 flex list-none flex-col p-0">
+        {
+          services.map((service) => (
+            <li class="border-t border-border py-8 first:border-t-0 first:pt-0 last:pb-0">
+              <h3 class="m-0 font-display text-headline font-semibold leading-snug tracking-[-0.01em] text-white">
+                {service.name}
+              </h3>
+              <p class="m-0 mt-2 max-w-[38rem] text-copy leading-[1.7] text-muted [text-wrap:pretty]">
+                {service.detail}
+              </p>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section class={sectionGrid} aria-labelledby="selected-work-heading">
+      <h2 id="selected-work-heading" class={sectionHeading}>
+        <span aria-hidden="true" class="mr-1.5 text-accent">/</span>Selected work
+      </h2>
+      <SelectedWork
+        project={keelty}
+        summary="Christopher Keelty is a traditional master thatcher working across Somerset, Dorset and Wiltshire. I designed and built the business's website from the ground up."
+        contributions={keeltyContributions}
+        imageAlt="The Keelty Master Thatcher homepage: the headline “Beautiful Thatched Roofs Crafted with Care” above a row of photographs of thatched cottages."
+      />
+    </section>
+
+    <section class={sectionGrid} aria-labelledby="business-details-heading">
+      <h2 id="business-details-heading" class={sectionHeading}>
+        <span aria-hidden="true" class="mr-1.5 text-accent">/</span>Business details
+      </h2>
+      <dl class="m-0 flex flex-col">
+        {
+          businessDetails.map(({ term, detail, href }) => (
+            <div class="flex flex-col gap-1 border-t border-border py-5 first:border-t-0 first:pt-0 last:pb-0 sm:flex-row sm:gap-6">
+              <dt class="font-mono text-label uppercase leading-[1.6] tracking-[0.14em] text-muted sm:w-[11rem] sm:shrink-0 sm:pt-[3px]">
+                {term}
+              </dt>
+              <dd class="m-0 min-w-0 text-copy leading-[1.6] text-text">
+                {
+                  href ? (
+                    <TextLink href={href} class="[overflow-wrap:anywhere]">
+                      {detail}
+                    </TextLink>
+                  ) : (
+                    detail
+                  )
+                }
+              </dd>
+            </div>
+          ))
+        }
+      </dl>
+    </section>
+
+    <footer
+      class="mt-30 flex flex-wrap items-center justify-between gap-4 border-t border-border pt-8 max-sm:mt-20"
+    >
+      <TextLink href="/">Back to portfolio</TextLink>
+      <SocialLinks class="gap-6" />
+    </footer>
+  </main>
+</BaseLayout>

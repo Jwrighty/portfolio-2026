@@ -1,5 +1,6 @@
 ---
 import SocialLinks from '../primitives/SocialLinks.astro';
+import TextLink from '../primitives/TextLink.astro';
 
 interface Props {
   class?: string;
@@ -40,9 +41,14 @@ const { class: className } = Astro.props;
       applications in React, TypeScript, and Next.js, supported by 7 years of earlier
       business leadership at Amazon.
     </p>
+    <p>
+      Alongside product engineering, I take on selected web design and frontend consulting
+      projects for small businesses and product teams.
+    </p>
   </div>
 
-  <div class="settle mt-9" style="--i: 2">
+  <div class="settle mt-9 flex flex-wrap items-center gap-x-6 gap-y-3" style="--i: 2">
+    <TextLink href="/consulting">Consulting</TextLink>
     <SocialLinks class="gap-6" />
   </div>
 </header>
