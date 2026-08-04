@@ -109,7 +109,7 @@ const sectionGrid =
       </p>
 
       <div class="settle mt-9 flex flex-wrap items-center gap-x-6 gap-y-3" style="--i: 3">
-        <TextLink href={`mailto:${site.email}`} tone="accent">Discuss a project</TextLink>
+        <TextLink href="#business-details-heading" tone="accent">Discuss a project</TextLink>
         <TextLink href="/">Back to portfolio</TextLink>
       </div>
     </header>
@@ -147,7 +147,11 @@ const sectionGrid =
     </section>
 
     <section class={sectionGrid} aria-labelledby="business-details-heading">
-      <h2 id="business-details-heading" class={sectionHeading}>
+      <h2
+        id="business-details-heading"
+        tabindex="-1"
+        class:list={[sectionHeading, 'scroll-mt-12']}
+      >
         <span aria-hidden="true" class="mr-1.5 text-accent">/</span>Business details
       </h2>
       <dl class="m-0 flex flex-col">
