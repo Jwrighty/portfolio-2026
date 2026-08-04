@@ -1,0 +1,29 @@
+---
+/**
+ * A same-tab text link — internal routes and mailto actions. Shares the
+ * link vocabulary with ExternalLink but carries no external ↗ marker, so a
+ * reader is never told a destination leaves the site when it does not.
+ */
+interface Props {
+  href: string;
+  /** "muted" (default) rests muted and warms to accent on hover; "accent" rests accent and lifts to white. */
+  tone?: "muted" | "accent";
+  class?: string;
+}
+const { href, tone = "muted", class: className } = Astro.props;
+
+const toneClass =
+  tone === "accent" ? "text-accent hover:text-white" : "text-muted hover:text-accent";
+---
+
+<a
+  href={href}
+  class:list={[
+    "tap-target inline-flex items-center gap-1 rounded-[2px] font-mono text-meta leading-normal tracking-[0.04em]",
+    "draw-link",
+    toneClass,
+    className,
+  ]}
+>
+  <slot />
+</a>

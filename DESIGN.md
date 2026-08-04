@@ -132,7 +132,7 @@ A monochromatic cool near-black ramp (a whisper of blue, hue 262) carrying one w
 A single documented ramp of ten role-named steps, exposed as `--text-*` tokens in `global.css` (`text-display`, `text-headline`, `text-copy`, …) and never as loose one-off sizes. Each step is a role, not a pixel value; reach for the role, and if none fits, add a step to the ramp rather than a literal.
 
 - **`display`** (700, `clamp(3rem, 9vw, 5.25rem)`, line-height 0.95, tracking -0.02em, white/accent): The hero name only. Two masked lines that rise on load — forename white, surname vermilion.
-- **`display-sm`** (700, `clamp(2.5rem, 8vw, 4.5rem)`): The 404 headline — the one place a second display size earns its keep.
+- **`display-sm`** (700, `clamp(2.5rem, 8vw, 4.5rem)`): The headline of a standalone page that is not the homepage — the 404 and the consulting page. It states the page's subject where `display` would compete with the hero nameplate.
 - **`headline`** (600, 1.2rem, tracking -0.01em, white): Project titles. The largest type in the body flow.
 - **`section`** (600, 1.1rem, white): "Work" / "Projects" section headings (each prefixed with a vermilion `/`, sticky in the left rail on wide viewports) and company names.
 - **`role`** (500, 0.92rem, primary text): Role titles within a career entry.

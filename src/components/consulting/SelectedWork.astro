@@ -1,0 +1,71 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
+import ExternalLink from "../primitives/ExternalLink.astro";
+
+interface Contribution {
+  label: string;
+  detail: string;
+}
+
+interface Props {
+  /** The portfolio project entry — the source of truth for title, status, live URL and cover image. */
+  project: CollectionEntry<"projects">;
+  /** Client-facing framing of the engagement; supplied by the page, not the project entry. */
+  summary: string;
+  contributions: Contribution[];
+  imageAlt: string;
+}
+
+const { project, summary, contributions, imageAlt } = Astro.props;
+const { title, status, liveUrl, coverImage } = project.data;
+---
+
+<article>
+  <div class="mb-4 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+    <h3
+      class="m-0 font-display text-headline font-semibold leading-snug tracking-[-0.01em] text-white"
+    >
+      {title}
+    </h3>
+    {status && <span class="font-mono text-label leading-normal text-muted">{status}</span>}
+  </div>
+
+  {
+    coverImage && (
+      <Image
+        src={coverImage}
+        alt={imageAlt}
+        widths={[480, 720, 1080, 1440]}
+        sizes="(max-width: 640px) 90vw, (max-width: 1023px) 88vw, 42rem"
+        loading="lazy"
+        class="mb-7 block w-full rounded-[3px] border border-border"
+      />
+    )
+  }
+
+  <p class="m-0 max-w-[38rem] text-copy leading-[1.7] text-muted [text-wrap:pretty]">
+    {summary}
+  </p>
+
+  <dl class="m-0 mt-6 flex max-w-[38rem] flex-col gap-3">
+    {
+      contributions.map(({ label, detail }) => (
+        <div>
+          <dt class="font-mono text-label uppercase tracking-[0.14em] text-muted">{label}</dt>
+          <dd class="m-0 mt-1 text-copy leading-[1.7] text-muted [text-wrap:pretty]">{detail}</dd>
+        </div>
+      ))
+    }
+  </dl>
+
+  {
+    liveUrl && (
+      <div class="mt-7">
+        <ExternalLink href={liveUrl} tone="accent">
+          Visit the website
+        </ExternalLink>
+      </div>
+    )
+  }
+</article>
