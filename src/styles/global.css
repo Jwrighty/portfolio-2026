@@ -98,6 +98,9 @@
 }
 
 html {
+  /* In-page anchors glide rather than jump; the reduced-motion block below
+     forces this back to `auto`. */
+  scroll-behavior: smooth;
   background-color: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-sans);
